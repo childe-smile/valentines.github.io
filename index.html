@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia dos Namorados</title>
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', 'Georgia', sans-serif;
+            background-image: url(assets/background.jpeg);
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 20px;
+            color: #b133ff;
+            opacity: 50.6%;
+            animation: floatHeart 8s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-20vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            height: auto;
+            width: 100%;
+            background: rgba(255, 255, 255, 60.95%);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 60.95%);
+            overflow: hidden;
+            position:auto;
+            z-index: 1;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #dc6bff, #d633ff);
+            opacity: 60.95%;
+            padding: 50px 30px;
+            text-align: center;
+            color: rgb(255, 255, 255, 100%);
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .message-card {
+            background: #faf5ff;
+            opacity: 60.95%;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            border-left: 5px solid #dd33ff;
+            box-shadow: 0 5px 20px rgba(0,0,0,60.95%);
+        }
+
+        .message-card2 {
+            opacity: 60.95%;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .message-card h2 {
+            color: #dd33ff;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .message-card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .gallery {
+            margin: 40px 0;
+        }
+
+        .gallery h2 {
+            text-align: center;
+            color: #d333ff;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            opacity: 60.95%;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            opacity: 90.95%;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .photo-placeholder {
+            background: linear-gradient(135deg, #f7ddff, #dfb3ff);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            opacity: 90.95%;
+        }
+
+        .photo-card p {
+            padding: 15px;
+            text-align: center;
+            color: #c933ff;
+            font-weight: bold;
+            opacity: 60.95%;
+        }
+
+        .qualities {
+            background: linear-gradient(135deg, #f2e6ff, #ecd4ff);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            opacity: 80%;
+        }
+
+        .qualities h2 {
+            text-align: center;
+            color: #be33ff;
+            margin-bottom: 25px;
+            opacity: 60.95%;
+        }
+
+        .qualities-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .quality-item {
+            background: white;
+            padding: 12px;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: bold;
+            color: #bb33ff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .quality-item:hover {
+            background: #a733ff;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .countdown {
+            background: white;
+            opacity: 60.95%;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .countdown h2 {
+            color: #a033ff;
+            margin-bottom: 20px;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .timer-box {
+            background: linear-gradient(135deg, #7f6bff, #5833ff);
+            color: white;
+            opacity: 80.95%;
+            padding: 20px;
+            border-radius: 15px;
+            min-width: 80px;
+        }
+
+        .timer-number {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .timer-label {
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .special-button {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #b86bff, #9633ff);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(163, 51, 255, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(167, 51, 255, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            background: #aa33ff;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .timer-box {
+                padding: 15px;
+                min-width: 70px;
+            }
+            
+            .timer-number {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="hearts-container"></div>
+
+<div class="container">
+    <div class="header">
+        <h1>Feliz Dia dos Namorados!</h1>
+        <p>Meu xuxuzinho lindo ❤️</p>
+    </div>
+
+    <div class="content">
+        <div class="message-card">
+            <h2>Amorzinho,</h2>
+            <p>
+                Você é a pessoa mais querida, carinhosa, gentil e meiga que já conheci. Meu namorado e melhor amigo.
+                Ser sua namorada foi a segunda melhor coisa que já me aconteceu, a primeira foi ter te conhecido.
+                A data pode não ser importante, mas adoro ter um motivo pra fazer algo pra você.
+            </p>
+        </div>
+
+        <div class="gallery">
+            <h2>Alguns momentos nosso:</h2>
+            <div class="photo-grid">
+                <div class="photo-card">
+                    <div class="photo-placeholder"><img src="assets/ai.jpeg" alt="ai" width="300px" height="200px"></div>
+                    <p>Nossa primeira foto juntos</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-placeholder"><img src="assets/drawing.jpeg" alt="drawing" width="300px" height="200px"></div>
+                    <p>Desenho que fiz de nós dois</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-placeholder"><img src="assets/minecraft.jpeg" alt="minecraft" width="300px" height="200px"></div>
+                    <p>A surpresa que cê fez no mine</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-placeholder"><img src="assets/pic.jpeg" alt="pic" width="300px" height="200px"></div>
+                    <p>Nosso primeiro date</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-placeholder"><img src="assets/us.jpeg" alt="us" width="300px" height="200px"></div>
+                    <p>Literalmente nós dois</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-placeholder"><img src="assets/us-again.jpeg" alt="us-again" width="300px" height="200px"></div>
+                    <p>Literalmente nós dois de novo</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-placeholder"><img src="assets/namorado.jpeg" alt="us" width="300px" height="200px"></div>
+                    <p>O namorado mais lindo de todos</p>
+                </div>
+                <div class="photo-card">
+                    <div class="photo-placeholder">
+                        <iframe src="assets/melhor-video.mp4" tittle="melhor-video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" width="250px"allowfullscreen></iframe></div>
+                        <p>Melhor vídeo de todo o universo</p>
+                </div>
+            </div>
+        </div>
+        <div class="qualities">
+            <h2>Eu amo meu namorado?</h2>
+            <div class="qualities-list">
+                <div class="quality-item">❤️</div>
+                <div class="quality-item">❤️</div>
+            </div>
+        </div>
+
+        <div class="special-button">
+            <button class="btn" onclick="showSurprise()">Descubra:</button>
+            <p class="message-card2">(Clique várias vezes)</p>
+        </div>
+    </div>
+        <div class="countdown">
+            <h2>Nosso tempo juntos:</h2>
+            <div class="timer">
+                <div class="timer-box">
+                    <div class="timer-number" id="days">0</div>
+                    <div class="timer-label">Dias</div>
+                </div>
+                <div class="timer-box">
+                    <div class="timer-number" id="hours">0</div>
+                    <div class="timer-label">Horas</div>
+                </div>
+                <div class="timer-box">
+                    <div class="timer-number" id="minutes">0</div>
+                    <div class="timer-label">Minutos</div>
+                </div>
+                <div class="timer-box">
+                    <div class="timer-number" id="seconds">0</div>
+                    <div class="timer-label">Segundos</div>
+                </div>
+            </div>
+        </div>
+
+    <div class="footer">
+        <p>Aguardando ansiosa os próximos dias dos namorados que, finalmente, passaremos juntos</p>
+        <p style="margin-top: 10px; font-size: 0.8em;">Para: o melhor namorado do mundo - Tarbo 💝</p>
+    </div>
+</div>
+
+<script>
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = ['❤️', '💕', '💖', '💗', '💓', '💝'][Math.floor(Math.random() * 6)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+        heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+        heart.style.opacity = Math.random() * 0.5 + 0.3;
+        document.getElementById('hearts-container').appendChild(heart);
+        
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+    }
+
+    setInterval(createHeart, 300);
+
+    const startDate = new Date('2026-03-19T13:44:00');
+    
+    function updateCountdown() {
+        const now = new Date();
+        const diff = now - startDate;
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    function showSurprise() {
+        const messages = [
+            "Te amo",
+            "Te amo muito",
+            "Te amo um montão",
+            "TE AMO",
+            "Você é o melhor namorado do mundo",
+            "TE AMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+        ];
+        
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+        alert(randomMessage);
+        
+        for(let i = 0; i < 20; i++) {
+            setTimeout(() => createHeart(), i * 50);
+        }
+    }
+
+    document.querySelectorAll('.quality-item').forEach(item => {
+        item.addEventListener('click', function() {
+            alert(`Será?`);
+        });
+    });
+</script>
+</body>
+</html>
